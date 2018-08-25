@@ -1,9 +1,3 @@
-/*
-TODO:
-* Get default routes
-*/
-
-//Read and set environment variables
 require("dotenv").config();
 
 var Twitter = require("twitter");
@@ -89,8 +83,7 @@ function tweets() {
             console.log(tweets[index].text);
 
         }
-        // The favorites.
-        //console.log(response);  // Raw response object.
+    
     });
 }
 
@@ -144,17 +137,14 @@ function movie() {
 
     console.log('\n'+"Loading..."+'\n');
 
-    //Omdi or movies request
-    // We then run the request module on a URL with a JSON
-    // movies = thirdArgument();
 
     request("http://www.omdbapi.com/?t=" + argument + "&y=&plot=short&apikey=trilogy", function (error, response, body) {
 
         var rating = JSON.parse(body).Ratings[1];
-        // If there were no errors and the response code was 200 (i.e. the request was successful)...
+        
         if (!error && response.statusCode === 200) {
 
-            // Then we print out the imdbRating
+         
             console.log(JSON.parse(body).Title);
             console.log(JSON.parse(body).Year);
             console.log(Object.values(rating).join(": "));
@@ -171,17 +161,14 @@ function movieDefault() {
 
     console.log('\n'+"Loading..."+'\n');
 
-    //Omdi or movies request
-    // We then run the request module on a URL with a JSON
-    // movies = thirdArgument();
 
     request("http://www.omdbapi.com/?t=mr.nobody&y=&plot=short&apikey=trilogy", function (error, response, body) {
-
+       
         var rating = JSON.parse(body).Ratings[1];
-        // If there were no errors and the response code was 200 (i.e. the request was successful)...
+        
         if (!error && response.statusCode === 200) {
 
-            // Then we print out the imdbRating
+            
             console.log(JSON.parse(body).Title);
             console.log(JSON.parse(body).Year);
             console.log(Object.values(rating).join(": "));
@@ -219,10 +206,10 @@ function what() {
 
 function thirdArgument() {
 
-    // Stores all possible arguments in array.
+  
     argumentArray = process.argv;
 
-    // Loops through words in node argument.
+  
     for (var i = 3; i < argumentArray.length; i++) {
         argument += argumentArray[i];
     }
@@ -233,7 +220,7 @@ function thirdArgument() {
 
 function check() {
 
-    console.log("Please check the title again!");
+    console.log("Check title again!");
 }
 
 main();
